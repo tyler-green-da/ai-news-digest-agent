@@ -1,22 +1,22 @@
 # AI News Digest Agent
 
-> A sophisticated, multi-stage n8n automation that aggregates, analyzes, curates, and delivers a professional AI news newsletter.
+> A sophisticated, multi-stage n8n automation that aggregates, analyses, curates, and delivers a professional AI news newsletter by email.
 
-![Alt text for your GIF](URL_you_just_copied)
+![Short GIF of an example email](https://github.com/tyler-green-da/ai-news-digest-agent/blob/main/ai_newsletter_gif.gif?raw=true)
 
 
 ## 🚀 Project Overview
 
-In the fast-paced world of artificial intelligence, staying informed is critical for professionals in finance, tech, and business strategy. However, the sheer volume of daily news makes it impossible to keep up, leading to information overload where key signals are lost in the noise.
+In the fast-paced world of artificial intelligence, staying informed is critical for professionals in finance, tech, and business strategy. However, the sheer volume of daily news makes it impossible to keep up, leading to information overload where key signals are lost in the deluge of noise.
 
-This project solves that problem. The AI News Digest is an automated agent that acts as a personal intelligence analyst. It systematically gathers news from top-tier sources, uses multiple AI models to analyze and understand the content, curates only the most strategically important stories, and delivers a polished, easy-to-read newsletter to your inbox every morning.
+This project solves that problem. The AI News Digest is an automated agent that acts as a personal intelligence analyst. It systematically gathers news from top-tier sources, uses multiple AI models to analyse and understand the content, curates only the most strategically important stories, and delivers a polished, easy-to-read newsletter to your inbox every morning.
 
-It's designed for a professional audience, like traders and hedge fund managers, who need timely, curated, and actionable intelligence.
+It's designed for a professional audience in the financial industry, like traders and hedge fund managers, who need timely, curated, and actionable intelligence.
 
 ## ✨ Key Features
 
 * **Automated News Aggregation:** Scans multiple RSS feeds from sources like NVIDIA, Google AI, and MIT Technology Review.
-* **AI-Powered Analysis & Categorization:** A first-pass AI reads every article to generate a multi-part summary (`Rundown`, `Details`, `Why it matters`) and assigns it to a relevant category (e.g., "Hardware & Infrastructure").
+* **AI-Powered Analysis & Categorisation:** A first-pass AI reads every article to generate a multi-part summary (`Rundown`, `Details`, `Why it matters`) and assigns it to a relevant category (e.g., "Hardware & Infrastructure").
 * **AI-Powered Importance Curation:** A second AI acts as a critical editor, reading all the initial summaries and assigning each an "importance score" from 1-10 based on its potential market impact.
 * **Dynamic Filtering:** The workflow automatically filters out low-scoring articles, ensuring only the most noteworthy stories (e.g., score 7+) make it into the final digest.
 * **AI-Generated Executive Summary:** A third AI pass performs a meta-analysis on the *curated* stories to write a conversational, high-level introduction, just like a human editor.
@@ -38,7 +38,7 @@ The n8n workflow executes in a sophisticated, multi-stage pipeline:
 2.  **Aggregation:** Multiple `RSS Read` nodes fetch the latest articles in parallel.
 3.  **Deduplication:** The articles are merged and duplicates are removed.
 4.  **Initial Analysis (`summaries` node):** Every article is sent to the OpenAI API with a prompt that instructs it to return a structured JSON object containing a detailed summary, a category, and a unique `link` identifier.
-5.  **Curation (`Code` node logic):** The final `Code` node takes all the analyzed articles and performs the main business logic:
+5.  **Curation (`Code` node logic):** The final `Code` node takes all the analysed articles and performs the main business logic:
     * It filters the articles, keeping only those with an `importance_score` of 7 or higher.
     * It prepares a text block of the curated summaries and sends it to another AI model to generate the conversational executive summary.
     * It builds the final HTML, inserting the executive summary, a clickable Table of Contents, and the formatted "cards" for each curated article.
@@ -49,7 +49,7 @@ The n8n workflow executes in a sophisticated, multi-stage pipeline:
 This project involved significant real-world problem-solving:
 
 * **AI Unpredictability:** A core challenge was handling the AI's tendency to not always return perfectly structured JSON. The final code was engineered to be highly resilient, able to parse data even if the AI's output format varied slightly.
-* **Advanced Prompt Engineering:** Moving from simple summarization to a curated digest required iteratively refining the AI prompts. I had to "train" the AI to act as a critical editor by giving it specific instructions on how to distribute its importance scores, transforming it from a simple tool into a system with judgment.
+* **Advanced Prompt Engineering:** Moving from simple summarisation to a curated digest required iteratively refining the AI prompts. I had to "train" the AI to act as a critical editor by giving it specific instructions on how to distribute its importance scores, transforming it from a simple tool into a system with judgment.
 * **Data Integrity:** Early versions of the workflow failed because they used the article `title` as a unique ID. I discovered the AI would subtly rephrase titles, breaking the matching logic. The solution was to re-architect the workflow to use the article's URL (`link`) as a stable, immutable identifier, a key principle in data engineering.
 
 ## 🔮 Future Improvements
@@ -58,3 +58,5 @@ This project serves as a robust platform for further enhancements:
 
 * **Tier 2:** Integrate AI-powered **Sentiment Analysis** for each story and identify/link **Stock Tickers** of mentioned companies.
 * **Tier 3:** Add user-defined **Keyword Alerts** to highlight stories relevant to a specific portfolio or area of interest.
+
+* While this project may be limited in its scope, the potential for the underlying agentic workflow is very strong. I intend on adapting this workflow to create an SEC Filing Analysis and aggregation agent. By extracting data from the EDGAR database combined with comprehensive prompt engineering, I intend on creating a powerful tool that automates the time-consuming process of financial document analysis. By prompting an AI to read and interpret SEC filings as they are published, the agent will deliver a daily digest highlighting crucial changes in company risk profiles, management outlook, and other key indicators. This service would provide retail and institutional investors with valuable, data-driven insights at a fraction of the time it would take to find them manually, with the additional edge of being one of the first to understand this information.
