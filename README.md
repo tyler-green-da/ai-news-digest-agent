@@ -1,4 +1,4 @@
-# AI News Digest Agent
+# AI Market Intelligence Agent
 
 > A sophisticated, multi-stage n8n agentic workflow that aggregates, analyses, curates, and delivers a professional AI news newsletter by email.
 
