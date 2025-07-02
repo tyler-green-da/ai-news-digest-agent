@@ -2,7 +2,7 @@
 
 > A sophisticated, multi-stage n8n automation that aggregates, analyzes, curates, and delivers a professional AI news newsletter.
 
-![Final Email Output](URL_TO_GIF_OF_THE_EMAIL)
+![Alt text for your GIF](URL_you_just_copied)
 
 
 ## 🚀 Project Overview
