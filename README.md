@@ -1,6 +1,6 @@
 # AI News Digest Agent
 
-> A sophisticated, multi-stage n8n automation that aggregates, analyses, curates, and delivers a professional AI news newsletter by email.
+> A sophisticated, multi-stage n8n agentic workflow that aggregates, analyses, curates, and delivers a professional AI news newsletter by email.
 
 ![Short GIF of an example email](https://github.com/tyler-green-da/ai-news-digest-agent/blob/main/ai_newsletter_gif.gif?raw=true)
 
